@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#2457d6" />
+    <title>Where Did I Put It?</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header>
+        <p class="eyebrow">A simple place to remember</p>
+        <h1>Where did I put it?</h1>
+        <p class="intro">Save an item and its location, then find it when you need it.</p>
+      </header>
+
+      <section id="home-screen" class="screen" aria-label="Choose an action">
+        <button class="action-card find" type="button" data-open="find-screen">
+          <span class="action-icon" aria-hidden="true">⌕</span>
+          <span><strong>Find an Item</strong><small>Search for where something is.</small></span>
+        </button>
+        <button class="action-card add" type="button" data-open="add-screen">
+          <span class="action-icon" aria-hidden="true">＋</span>
+          <span><strong>Add an Item</strong><small>Save an item and its location.</small></span>
+        </button>
+      </section>
+
+      <section id="find-screen" class="screen hidden" aria-labelledby="find-title">
+        <button class="back" type="button" data-home>← Home</button>
+        <h2 id="find-title">Find an item</h2>
+        <form id="find-form" novalidate>
+          <label for="search-item">What are you looking for?</label>
+          <input id="search-item" name="item" type="text" autocomplete="off" placeholder="For example: Fan" />
+          <button class="primary" type="submit">Find item</button>
+        </form>
+        <div id="find-result" class="message" role="status" aria-live="polite"></div>
+      </section>
+
+      <section id="add-screen" class="screen hidden" aria-labelledby="add-title">
+        <button class="back" type="button" data-home>← Home</button>
+        <h2 id="add-title">Add an item</h2>
+        <form id="add-form" novalidate>
+          <label for="item-name">Item name</label>
+          <input id="item-name" name="item" type="text" autocomplete="off" placeholder="For example: Fan" />
+          <label for="item-location">Where did you put it?</label>
+          <input id="item-location" name="location" type="text" autocomplete="off" placeholder="For example: Bedroom" />
+          <button class="primary" type="submit">Save item</button>
+        </form>
+        <div id="add-result" class="message" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <dialog id="duplicate-dialog" aria-labelledby="duplicate-title">
+      <h2 id="duplicate-title">Item already saved</h2>
+      <p id="duplicate-copy"></p>
+      <div class="dialog-actions">
+        <button class="secondary" id="keep-old" type="button">Keep old location</button>
+        <button class="primary" id="replace-location" type="button">Replace location</button>
+      </div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
